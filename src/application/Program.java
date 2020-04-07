@@ -31,19 +31,18 @@ public class Program {
 			Date finishDate = sdf.parse(sc.nextLine());
 
 			CarRental carRental = new CarRental(startDate, finishDate, new Vehicle(carModel));
-			
+
 			System.out.print("Enter price per hour: ");
 			double pricePerHour = sc.nextDouble();
 			System.out.print("Enter price per day: ");
 			double pricePerDay = sc.nextDouble();
 
 			RentalService rentalService = new RentalService(pricePerHour, pricePerDay, new BrazilTaxService());
-			
+
 			rentalService.processInvoice(carRental);
-			
+
 			System.out.println("INVOICE:");
 			System.out.println(carRental.getInvoice());
-
 
 		} catch (ParseException e) {
 			System.out.println("Parse Error:" + e.getMessage());
